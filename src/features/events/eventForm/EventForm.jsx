@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
+import { Link } from 'react-router-dom';
 import { Segment, Header, Form, Button } from "semantic-ui-react";
 import cuid from "cuid";
 
-export default function EventForm({ setFormOpen, createEvent, selectedEvent, updateEvent }) {
+export default function EventForm({ createEvent, selectedEvent, updateEvent }) {
 
     const defaultValues = useMemo(() => (
         {
@@ -100,10 +101,10 @@ export default function EventForm({ setFormOpen, createEvent, selectedEvent, upd
         </Form.Field>
         <Button type='submit' floated='right' positive content='Submit' />
         <Button
-          type='submit'
+          as={Link}
+          to='/events'
           floated='right'
           content='Cancel'
-          onClick={() => setFormOpen(false)}
         />
       </Form>
     </Segment>
