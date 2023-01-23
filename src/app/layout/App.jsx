@@ -6,6 +6,8 @@ import EventDetailedPage from "../../features/events/eventDetailed/EventDetailed
 import EventForm from "../../features/events/eventForm/EventForm";
 import HomePage from "../../features/home/HomePage";
 import NavBar from "../../features/nav/NavBar";
+import Sandbox from "../../features/sandbox/Sandbox";
+import ModalManager from "../common/modals/ModalManager";
 
 function App() {
 
@@ -22,9 +24,11 @@ function App() {
 
   return (
     <React.Fragment>
+      <ModalManager />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/events' element={<EventsLayout />} >
+          <Route path='sandbox' element={<Sandbox />} />
           <Route path='' element={<EventDashboard />} />
           {['new', 'manage/:id'].map((path, index) => <Route path={path} element={<EventForm />} key={index} />)}
           <Route path=':id' element={<EventDetailedPage />} />
